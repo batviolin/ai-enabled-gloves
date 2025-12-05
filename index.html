@@ -60,24 +60,37 @@ nav ul li a:hover{
     height:100vh;
     display:flex;
     align-items:center;
-    justify-content:space-between;
     padding:0 80px;
-    background:linear-gradient(to right, #e0f0ff, #ffffff);
+    
+    background:url("https://www.sharetec.com/wp-content/uploads/2024/07/AI-People-Helping-People-1024x683.jpg") no-repeat center center/cover;
+
+    position:relative;
+}
+
+/* Dark overlay for readability */
+.hero::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
 }
 
 .hero-text{
+    position:relative;
     max-width:50%;
+    color:white;
 }
 .hero-text h1{
     font-size:52px;
     font-weight:800;
-    color:#1b1b1b;
     line-height:1.2;
 }
 .hero-text p{
     margin-top:20px;
     font-size:18px;
-    color:#555;
 }
 .hero-text button{
     margin-top:30px;
@@ -92,16 +105,6 @@ nav ul li a:hover{
 }
 .hero-text button:hover{
     background:#1d5eb8;
-}
-
-.hero-img img{
-    width:420px;
-    animation:float 3s ease-in-out infinite;
-}
-@keyframes float {
-    0%{ transform:translateY(0); }
-    50%{ transform:translateY(-20px); }
-    100%{ transform:translateY(0); }
 }
 
 /* ------------ FEATURES SECTION ------------ */
@@ -183,7 +186,6 @@ nav ul li a:hover{
     margin-bottom:40px;
     text-align:center;
 }
-
 .tech-grid{
     display:flex;
     justify-content:space-between;
@@ -294,9 +296,6 @@ footer{
         <h1>Give Voice to Silence<br>with Smart AI Gloves</h1>
         <p>Our AI-enabled smart gloves translate American Sign Language (ASL) gestures into spoken words in real time — making communication seamless for mute individuals.</p>
         <button>Learn More</button>
-    </div>
-    <div class="hero-img">
-        <img src="https://transmitter.ieee.org/wp-content/uploads/diy/4940b.jpg" alt="Smart Gloves">
     </div>
 </section>
 
@@ -412,4 +411,5 @@ footer{
     © 2025 SmartGlove AI — Empowering Communication Through Technology
 </footer>
 
-
+</body>
+</html>
