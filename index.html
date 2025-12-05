@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Smart Gloves for Mute People</title>
+
+<style>
+/* ------------ GLOBAL STYLES ------------ */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background:#f5f7fa;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* ------------ NAVBAR ------------ */
+nav{
+    width:100%;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    z-index:100;
+}
+nav .logo{
+    font-size:26px;
+    font-weight:700;
+    color:#2a7ae2;
+}
+nav ul{
+    display:flex;
+    list-style:none;
+}
+nav ul li{
+    margin-left:30px;
+}
+nav ul li a{
+    text-decoration:none;
+    font-size:16px;
+    color:#333;
+    font-weight:500;
+    transition:0.3s;
+}
+nav ul li a:hover{
+    color:#2a7ae2;
+}
+
+/* ------------ HERO SECTION ------------ */
+.hero{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 80px;
+    background:linear-gradient(to right, #e0f0ff, #ffffff);
+}
+
+.hero-text{
+    max-width:50%;
+}
+.hero-text h1{
+    font-size:52px;
+    font-weight:800;
+    color:#1b1b1b;
+    line-height:1.2;
+}
+.hero-text p{
+    margin-top:20px;
+    font-size:18px;
+    color:#555;
+}
+.hero-text button{
+    margin-top:30px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    background:#2a7ae2;
+    color:#fff;
+    cursor:pointer;
+    border-radius:6px;
+    transition:0.3s;
+}
+.hero-text button:hover{
+    background:#1d5eb8;
+}
+
+.hero-img img{
+    width:420px;
+    animation:float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%{ transform:translateY(0); }
+    50%{ transform:translateY(-20px); }
+    100%{ transform:translateY(0); }
+}
+
+/* ------------ FEATURES SECTION ------------ */
+.features{
+    margin-top:80px;
+    padding:60px 80px;
+    text-align:center;
+}
+.features h2{
+    font-size:36px;
+    margin-bottom:40px;
+}
+.feature-boxes{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+.feature{
+    width:270px;
+    padding:20px;
+    background:#fff;
+    margin:20px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.feature:hover{
+    transform:translateY(-10px);
+}
+.feature i{
+    font-size:40px;
+    color:#2a7ae2;
+    margin-bottom:15px;
+}
+
+/* ------------ HOW IT WORKS ------------ */
+.how{
+    margin-top:80px;
+    padding:60px 80px;
+}
+.how h2{
+    text-align:center;
+    font-size:34px;
+    margin-bottom:40px;
+}
+.steps{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+.step{
+    width:30%;
+    min-width:260px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom:25px;
+    transition:0.3s;
+}
+.step:hover{
+    transform:translateY(-8px);
+}
+.step-number{
+    font-size:30px;
+    color:#2a7ae2;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+/* ------------ TECHNOLOGY ------------ */
+.tech{
+    margin-top:80px;
+    padding:60px 80px;
+    background:#eef5ff;
+}
+.tech h2{
+    font-size:34px;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.tech-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+.tech-card{
+    width:30%;
+    min-width:260px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+.tech-card h3{
+    color:#2a7ae2;
+    margin-bottom:10px;
+}
+
+/* ------------ TESTIMONIALS ------------ */
+.testimonials{
+    margin-top:80px;
+    padding:60px 80px;
+}
+.testimonials h2{
+    font-size:34px;
+    text-align:center;
+    margin-bottom:40px;
+}
+.testimonial-boxes{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+.testimonial{
+    width:300px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin:20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.testimonial p{
+    font-size:15px;
+    color:#555;
+    margin-bottom:15px;
+}
+.testimonial h4{
+    color:#2a7ae2;
+}
+
+/* ------------ CALL TO ACTION ------------ */
+.cta{
+    margin-top:80px;
+    padding:80px;
+    text-align:center;
+    background:#2a7ae2;
+    color:white;
+}
+.cta h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+.cta button{
+    margin-top:20px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    background:white;
+    color:#2a7ae2;
+    cursor:pointer;
+    border-radius:8px;
+    font-weight:600;
+    transition:0.3s;
+}
+.cta button:hover{
+    background:#f2f2f2;
+}
+
+/* ------------ FOOTER ------------ */
+footer{
+    padding:30px;
+    text-align:center;
+    background:#1d5eb8;
+    color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">SmartGlove AI</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#tech">Technology</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Give Voice to Silence<br>with Smart AI Gloves</h1>
+        <p>Our AI-enabled smart gloves translate American Sign Language (ASL) gestures into spoken words in real time — making communication seamless for mute individuals.</p>
+        <button>Learn More</button>
+    </div>
+    <div class="hero-img">
+        <img src="https://transmitter.ieee.org/wp-content/uploads/diy/4940b.jpg" alt="Smart Gloves">
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+    <h2>Why Choose SmartGlove AI?</h2>
+
+    <div class="feature-boxes">
+        <div class="feature">
+            <i>🤖</i>
+            <h3>AI Gesture Recognition</h3>
+            <p>Accurately detects over 100+ ASL gestures.</p>
+        </div>
+
+        <div class="feature">
+            <i>🔊</i>
+            <h3>Real-Time Voice Output</h3>
+            <p>Instant conversion of sign language into speech.</p>
+        </div>
+
+        <div class="feature">
+            <i>🧤</i>
+            <h3>Ergonomic Design</h3>
+            <p>Soft, flexible, and comfortable for daily wear.</p>
+        </div>
+
+        <div class="feature">
+            <i>📱</i>
+            <h3>App Connectivity</h3>
+            <p>Pair with our mobile app for customization.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+    <h2>How It Works</h2>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Wear the Smart Gloves</h3>
+            <p>Lightweight, sensor-enabled gloves that track finger and hand movements.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>AI Detects Gestures</h3>
+            <p>Advanced algorithms interpret ASL gestures with high accuracy.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Speech is Generated</h3>
+            <p>The built-in speaker instantly speaks the interpreted phrase aloud.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech" id="tech">
+    <h2>The Technology Behind SmartGlove AI</h2>
+
+    <div class="tech-grid">
+        <div class="tech-card">
+            <h3>Motion Sensors</h3>
+            <p>High-precision flex and motion sensors track hand and finger movements.</p>
+        </div>
+
+        <div class="tech-card">
+            <h3>Machine Learning</h3>
+            <p>Our ASL recognition model trains on thousands of gesture samples.</p>
+        </div>
+
+        <div class="tech-card">
+            <h3>Bluetooth 5.0</h3>
+            <p>Fast, stable wireless connection to phones, tablets, and wearable speakers.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+    <h2>What Users Say</h2>
+
+    <div class="testimonial-boxes">
+        <div class="testimonial">
+            <p>“This device gave my son a new way to express himself. Truly life-changing!”</p>
+            <h4>— Sarah M.</h4>
+        </div>
+
+        <div class="testimonial">
+            <p>“Communication at work is now effortless. I feel more confident than ever.”</p>
+            <h4>— Daniel K.</h4>
+        </div>
+
+        <div class="testimonial">
+            <p>“Simple, smart, and effective. A brilliant innovation!”</p>
+            <h4>— Priya S.</h4>
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+    <h2>Be Part of the Communication Revolution</h2>
+    <p>Join thousands of users benefiting from SmartGlove AI.</p>
+    <button>Get Early Access</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 SmartGlove AI — Empowering Communication Through Technology
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Smart Gloves for Mute People</title>
+
+<style>
+/* ------------ GLOBAL STYLES ------------ */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background:#f5f7fa;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* ------------ NAVBAR ------------ */
+nav{
+    width:100%;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    z-index:100;
+}
+nav .logo{
+    font-size:26px;
+    font-weight:700;
+    color:#2a7ae2;
+}
+nav ul{
+    display:flex;
+    list-style:none;
+}
+nav ul li{
+    margin-left:30px;
+}
+nav ul li a{
+    text-decoration:none;
+    font-size:16px;
+    color:#333;
+    font-weight:500;
+    transition:0.3s;
+}
+nav ul li a:hover{
+    color:#2a7ae2;
+}
+
+/* ------------ HERO SECTION ------------ */
+.hero{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 80px;
+    background:linear-gradient(to right, #e0f0ff, #ffffff);
+}
+
+.hero-text{
+    max-width:50%;
+}
+.hero-text h1{
+    font-size:52px;
+    font-weight:800;
+    color:#1b1b1b;
+    line-height:1.2;
+}
+.hero-text p{
+    margin-top:20px;
+    font-size:18px;
+    color:#555;
+}
+.hero-text button{
+    margin-top:30px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    background:#2a7ae2;
+    color:#fff;
+    cursor:pointer;
+    border-radius:6px;
+    transition:0.3s;
+}
+.hero-text button:hover{
+    background:#1d5eb8;
+}
+
+.hero-img img{
+    width:420px;
+    animation:float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%{ transform:translateY(0); }
+    50%{ transform:translateY(-20px); }
+    100%{ transform:translateY(0); }
+}
+
+/* ------------ FEATURES SECTION ------------ */
+.features{
+    margin-top:80px;
+    padding:60px 80px;
+    text-align:center;
+}
+.features h2{
+    font-size:36px;
+    margin-bottom:40px;
+}
+.feature-boxes{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+.feature{
+    width:270px;
+    padding:20px;
+    background:#fff;
+    margin:20px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.feature:hover{
+    transform:translateY(-10px);
+}
+.feature i{
+    font-size:40px;
+    color:#2a7ae2;
+    margin-bottom:15px;
+}
+
+/* ------------ HOW IT WORKS ------------ */
+.how{
+    margin-top:80px;
+    padding:60px 80px;
+}
+.how h2{
+    text-align:center;
+    font-size:34px;
+    margin-bottom:40px;
+}
+.steps{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+.step{
+    width:30%;
+    min-width:260px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom:25px;
+    transition:0.3s;
+}
+.step:hover{
+    transform:translateY(-8px);
+}
+.step-number{
+    font-size:30px;
+    color:#2a7ae2;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+/* ------------ TECHNOLOGY ------------ */
+.tech{
+    margin-top:80px;
+    padding:60px 80px;
+    background:#eef5ff;
+}
+.tech h2{
+    font-size:34px;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.tech-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+.tech-card{
+    width:30%;
+    min-width:260px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+.tech-card h3{
+    color:#2a7ae2;
+    margin-bottom:10px;
+}
+
+/* ------------ TESTIMONIALS ------------ */
+.testimonials{
+    margin-top:80px;
+    padding:60px 80px;
+}
+.testimonials h2{
+    font-size:34px;
+    text-align:center;
+    margin-bottom:40px;
+}
+.testimonial-boxes{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+.testimonial{
+    width:300px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin:20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.testimonial p{
+    font-size:15px;
+    color:#555;
+    margin-bottom:15px;
+}
+.testimonial h4{
+    color:#2a7ae2;
+}
+
+/* ------------ CALL TO ACTION ------------ */
+.cta{
+    margin-top:80px;
+    padding:80px;
+    text-align:center;
+    background:#2a7ae2;
+    color:white;
+}
+.cta h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+.cta button{
+    margin-top:20px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    background:white;
+    color:#2a7ae2;
+    cursor:pointer;
+    border-radius:8px;
+    font-weight:600;
+    transition:0.3s;
+}
+.cta button:hover{
+    background:#f2f2f2;
+}
+
+/* ------------ FOOTER ------------ */
+footer{
+    padding:30px;
+    text-align:center;
+    background:#1d5eb8;
+    color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">SmartGlove AI</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#tech">Technology</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Give Voice to Silence<br>with Smart AI Gloves</h1>
+        <p>Our AI-enabled smart gloves translate American Sign Language (ASL) gestures into spoken words in real time — making communication seamless for mute individuals.</p>
+        <button>Learn More</button>
+    </div>
+    <div class="hero-img">
+        <img src="https://transmitter.ieee.org/wp-content/uploads/diy/4940b.jpg" alt="Smart Gloves">
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+    <h2>Why Choose SmartGlove AI?</h2>
+
+    <div class="feature-boxes">
+        <div class="feature">
+            <i>🤖</i>
+            <h3>AI Gesture Recognition</h3>
+            <p>Accurately detects over 100+ ASL gestures.</p>
+        </div>
+
+        <div class="feature">
+            <i>🔊</i>
+            <h3>Real-Time Voice Output</h3>
+            <p>Instant conversion of sign language into speech.</p>
+        </div>
+
+        <div class="feature">
+            <i>🧤</i>
+            <h3>Ergonomic Design</h3>
+            <p>Soft, flexible, and comfortable for daily wear.</p>
+        </div>
+
+        <div class="feature">
+            <i>📱</i>
+            <h3>App Connectivity</h3>
+            <p>Pair with our mobile app for customization.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+    <h2>How It Works</h2>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Wear the Smart Gloves</h3>
+            <p>Lightweight, sensor-enabled gloves that track finger and hand movements.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>AI Detects Gestures</h3>
+            <p>Advanced algorithms interpret ASL gestures with high accuracy.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Speech is Generated</h3>
+            <p>The built-in speaker instantly speaks the interpreted phrase aloud.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech" id="tech">
+    <h2>The Technology Behind SmartGlove AI</h2>
+
+    <div class="tech-grid">
+        <div class="tech-card">
+            <h3>Motion Sensors</h3>
+            <p>High-precision flex and motion sensors track hand and finger movements.</p>
+        </div>
+
+        <div class="tech-card">
+            <h3>Machine Learning</h3>
+            <p>Our ASL recognition model trains on thousands of gesture samples.</p>
+        </div>
+
+        <div class="tech-card">
+            <h3>Bluetooth 5.0</h3>
+            <p>Fast, stable wireless connection to phones, tablets, and wearable speakers.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+    <h2>What Users Say</h2>
+
+    <div class="testimonial-boxes">
+        <div class="testimonial">
+            <p>“This device gave my son a new way to express himself. Truly life-changing!”</p>
+            <h4>— Sarah M.</h4>
+        </div>
+
+        <div class="testimonial">
+            <p>“Communication at work is now effortless. I feel more confident than ever.”</p>
+            <h4>— Daniel K.</h4>
+        </div>
+
+        <div class="testimonial">
+            <p>“Simple, smart, and effective. A brilliant innovation!”</p>
+            <h4>— Priya S.</h4>
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+    <h2>Be Part of the Communication Revolution</h2>
+    <p>Join thousands of users benefiting from SmartGlove AI.</p>
+    <button>Get Early Access</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 SmartGlove AI — Empowering Communication Through Technology
+</footer>
+
+</body>
+</html>
